@@ -29,9 +29,11 @@ $(document).ready(function() {
   window.turnserversDotComAPI.iceServers(function(iceServers) {
     var fixedIceServers = [];
     $.each(iceServers, function(i, server) {
-      if (server.url.match(/^turn:/) && server.credential) {
+      if (matches = server.url.match(/^turn:(.*)@(.*)$/)) {
         // Firefox seems to get upset if it has a credential but no username
-        server.username = 'mojolingo';
+        // Firefox also doesn't like the username in the TURN URI
+        server.username = matches[1];
+        server.url = 'turn:' + matches[2];
       }
       fixedIceServers.push(server);
     });
