@@ -1,0 +1,2 @@
+module TherapyHelper
+end
