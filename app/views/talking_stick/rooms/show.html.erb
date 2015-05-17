@@ -1,0 +1,54 @@
+<script src="//api.turnservers.com/api.js?key=rwqdpQRICrmmeqtvhTYtNTldWfCErymP"></script>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @room.name %>
+</p>
+
+<p>
+  <button id="connect">Connect to room</button>
+</p>
+
+<video id="localvideo"></video>
+<div id="partnerVideos"></div>
+
+<%= link_to 'Edit', edit_room_path(@room) %> |
+<%= link_to 'Back', rooms_path %>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  var myGuid = TalkingStick.generateGUID();
+  // Use the least-common-denominator, Rails API, for WebRTC setup
+  var options = {
+    url: '<%= room_path %>',
+    myGuid: myGuid,
+  };
+  var signalingEngine = new TalkingStick.RailsSignaling(options);
+
+  window.turnserversDotComAPI.iceServers(function(iceServers) {
+    var fixedIceServers = [];
+    $.each(iceServers, function(i, server) {
+      if (server.url.match(/^turn:/) && server.credential) {
+        // Firefox seems to get upset if it has a credential but no username
+        server.username = 'mojolingo';
+      }
+      fixedIceServers.push(server);
+    });
+    var options = {
+      guid: myGuid,
+      localVideo: $('#localvideo'),
+      roomUrl: '<%= room_path %>',
+      signalingEngine: signalingEngine,
+      logLevel: 'trace',
+      iceServers: fixedIceServers,
+    };
+    console.log(fixedIceServers);
+    TalkingStick.init(options);
+
+    $('#connect').click(TalkingStick.connect);
+  });
+  
+});
+</script>
+
