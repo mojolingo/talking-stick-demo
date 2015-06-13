@@ -55,6 +55,7 @@ $(document).ready(function() {
     roomUrl: '<%= room_path %>',
     signalingEngine: signalingEngine,
     logLevel: 'trace',
+    iceServers: [{url: 'stun:buckhead.alkaloid.net:32772', username: 'admin', credential: 'SomeBigSecaret'}],
   };
   TalkingStick.init(options);
 
