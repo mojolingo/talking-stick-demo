@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/mojolingo/talking_stick.git
-  revision: 6b5e299ef5d4e89b3c5332f4855de3a26cf2f94e
+  revision: 15119c7d9a3aceccc70665836f7e2b8618290ce9
   branch: feature/me_make_pretty_videos
   specs:
     talking_stick (0.0.1)
