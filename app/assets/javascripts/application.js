@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
+//= require talking_stick/application.js
 //= require turbolinks
 //= require_tree .
