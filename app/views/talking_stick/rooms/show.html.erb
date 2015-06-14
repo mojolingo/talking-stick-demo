@@ -96,8 +96,6 @@ function isInt(value){
   }
 }
 
-$(window).on('talking_stick.partner.media', resizeVideos);
-$(window).on('talking_stick.partner.cleanup', cleanupPartner);
 $('#localvideo').on('talking_stick.new_partner', function(ev, partner) {
   var container = $(document.createElement('div'));
   container.addClass('video');
@@ -116,6 +114,8 @@ $('#localvideo').on('talking_stick.new_partner', function(ev, partner) {
 
   $('#partnervideos').append(container);
 });
+$('#partnervideos').on('talking_stick.partner.media', resizeVideos);
+$('#partnervideos').on('talking_stick.partner.cleanup', cleanupPartner);
 $(window).resize(resizeVideos);
 
 </script>
