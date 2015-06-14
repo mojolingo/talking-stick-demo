@@ -60,7 +60,7 @@ $(document).ready(function() {
   TalkingStick.init(options);
 
   $('#connect').click(startSession);
-  $(window).on('talking_stick.local_media_setup', function() {
+  $('#localvideo').on('talking_stick.local_media_setup', function() {
     $('#preview_instructions').html('<%= t(:video_intro) %>');
   });
 });
