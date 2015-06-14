@@ -74,7 +74,7 @@ function startSession() {
 };
 
 function resizeVideos() {
-  var videoCollection = $('#partnervideos video');
+  var videoCollection = $('#partnervideos .video');
   var numVideos = videoCollection.length;
   var square = Math.sqrt(numVideos);
   if (!isInt(square)) {
@@ -98,6 +98,24 @@ function isInt(value){
 
 $(window).on('talking_stick.partner.media', resizeVideos);
 $(window).on('talking_stick.partner.cleanup', cleanupPartner);
+$('#localvideo').on('talking_stick.new_partner', function(ev, partner) {
+  var container = $(document.createElement('div'));
+  container.addClass('video');
+  var status = $(document.createElement('p'));
+  container.attr('data-partner-guid', partner.guid);
+  container.append(partner.videoElement);
+  container.append(status);
+
+  partner.videoElement.on('talking_stick.partner.ice_connection_state_change', function() {
+    status.html(partner.peerConnection.iceConnectionState);
+  });
+
+  partner.videoElement.on('talking_stick.partner.cleanup', function() {
+    container.remove();
+  });
+
+  $('#partnervideos').append(container);
+});
 $(window).resize(resizeVideos);
 
 </script>
