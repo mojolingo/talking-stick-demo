@@ -1,7 +1,6 @@
 GIT
   remote: git://github.com/mojolingo/talking_stick.git
-  revision: 8e078b7d8118965282e539f60dc85d214cbb00c1
-  branch: feature/me_make_pretty_videos
+  revision: 1e911f9b61c84b737c60e457fb0b4e636a46155a
   specs:
     talking_stick (0.0.1)
       jquery-rails (~> 4.0)
