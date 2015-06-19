@@ -122,17 +122,17 @@ function isInt(value){
 }
 
 $('#localvideo').on('talking_stick.new_partner', function(ev, partner) {
-  var container = $(document.createElement('div')); // <div>
-  container.addClass('video');  // <div class="video">
-  var status = $(document.createElement('p')); // <p>
+  var container = $(document.createElement('div'));
+  container.addClass('video');
+  var status = $(document.createElement('p'));
   status.html(partner.name);
-  container.attr('data-partner-guid', partner.guid); // <p data-partner-guid="abcd1234">
-  container.append(partner.videoElement); // <div class="video"><video/></div>
-  container.append(status); // 
+  container.attr('data-partner-guid', partner.guid);
+  container.append(partner.videoElement);
+  container.append(status);
 
-  // partner.videoElement.on('talking_stick.partner.ice_connection_state_change', function() {
-  //   status.html(partner.peerConnection.iceConnectionState);
-  // });
+  partner.videoElement.on('talking_stick.partner.ice_connection_state_change', function() {
+    status.html(partner.peerConnection.iceConnectionState);
+  });
 
   partner.videoElement.on('talking_stick.partner.cleanup', function() {
     container.remove();
