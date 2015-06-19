@@ -11,9 +11,12 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
-# Ignore all logfiles and tempfiles.
+# Ignore all logfiles and tempfiles and OS files.
 /log/*
 !/log/.keep
 /tmp
-
 .DS_Store
+
+# Don't permit secrets to be checked in
+/config/database.yml
+
