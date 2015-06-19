@@ -1,0 +1,115 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require talking_stick/application
+ */
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
+
+
+// Whole site
+
+html body {
+  background-color: #f1f2f2;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+
+
+// Navbar
+
+.navbar {
+  min-height: 80px;
+  border-radius: 0;
+}
+
+.navbar-default {
+  background-color: #98172c;
+  border-color: #98172c;
+}
+
+.fa {
+  color: white;
+}
+
+.mojo-logo {
+  max-height: 60px;
+}
+
+#nav-microphone, #nav-video, #nav-exit {
+  display: none;
+}
+
+.navbar-nav > li > a {
+  padding-bottom: 20px;
+}
+
+.nav-icon-text {
+  display: none;
+  color: white;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  font-family: Garamond Pro;
+}
+
+.navbar-nav > li > a:hover .nav-icon-text {
+  display: block;   
+}
+
+.nav > li > a {
+  padding: 10px 22px;
+}
+
+.nav > li {
+  padding-top: 10px;
+  min-height: 99px;
+}
+
+
+
+// Talking Stick show.html.erb page
+
+.friends-video {
+  width: 100%;
+  padding: 20px 0;
+  height: auto;
+}
+
+.one-friends-video-container {
+  max-width: 1500px;
+}
+
+.two-friends-video-container {
+  max-width: 1500px;
+}
+
+.four-friends-video-container {
+  max-width: 700px;
+}
+
+.friends-video-row {
+  padding-top: 70px;
+}
+
+/* Adjust the width of the video only while in the modal */
+.modal #localvideo {
+  max-width: inherit;
+}
