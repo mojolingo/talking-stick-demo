@@ -1,5 +1,6 @@
-PATH
-  remote: ~/Dropbox/Coding/Sandbox/Random/talking_stick
+GIT
+  remote: git://github.com/mojolingo/talking_stick.git
+  revision: 9a73c9d998f34866d78759ac502714d217dba412
   specs:
     talking_stick (0.0.1)
       jquery-rails (~> 4.0)
@@ -200,3 +201,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   unicorn
   web-console (~> 2.0)
+
+BUNDLED WITH
+   1.10.4
