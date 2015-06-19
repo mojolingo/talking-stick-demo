@@ -1,5 +1,6 @@
-PATH
-  remote: ~/Dropbox/Coding/Sandbox/Random/talking_stick
+GIT
+  remote: git://github.com/mojolingo/talking_stick.git
+  revision: 31ca630fce578fda3e02ffe9818ed74db9b8908c
   specs:
     talking_stick (0.0.1)
       jquery-rails (~> 4.0)
