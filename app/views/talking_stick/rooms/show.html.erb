@@ -13,27 +13,7 @@
         </div>
       </div>
       <div class="col-xs-9">
-        <div id="partnervideos">
-        <!-- sample videos BEGIN here -->
-
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 four-friends-video-container">
-              <%= image_tag('green-pic.png', class: 'friends-video')%>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 four-friends-video-container">
-              <%= image_tag('green-pic.png', class: 'friends-video')%>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 four-friends-video-container">
-              <%= image_tag('green-pic.png', class: 'friends-video')%>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 four-friends-video-container">
-              <%= image_tag('green-pic.png', class: 'friends-video')%>
-            </div>
-          </div>
-
-        <!-- sample videos END here -->
+        <div id="partnervideos" class="row">
         </div>
       </div>
     </div>
@@ -101,12 +81,32 @@ function startSession() {
 function resizeVideos() {
   var videoCollection = $('#partnervideos .video');
   var numVideos = videoCollection.length;
-  var square = Math.sqrt(numVideos);
-  if (!isInt(square)) {
-    // Round up to the next square
-    square = parseInt(square) + 1;
+  //var square = Math.sqrt(numVideos);
+  //if (!isInt(square)) {
+  //  // Round up to the next square
+  //  square = parseInt(square) + 1;
+  //}
+  //videoCollection.css('width', (100/square) + "%");
+
+  var videoCountClass;
+  console.log("Number of videos", numVideos);
+  switch(numVideos) {
+  case 1:
+    videoCountClass = 'one-friends-video-container';
+    break;
+  case 2:
+    videoCountClass = 'two-friends-video-container';
+    break;
+  case 3:
+  case 4:
+    videoCountClass = 'four-friends-video-container';
+    break;
   }
-  videoCollection.css('width', (100/square) + "%");
+
+  videoCollection.removeClass('one-friends-video-container');
+  videoCollection.removeClass('two-friends-video-container');
+  videoCollection.removeClass('four-friends-video-container');
+  videoCollection.addClass(videoCountClass);
 };
 
 function cleanupPartner() {
@@ -122,17 +122,19 @@ function isInt(value){
 }
 
 $('#localvideo').on('talking_stick.new_partner', function(ev, partner) {
-  var container = $(document.createElement('div')); // <div>
-  container.addClass('video');  // <div class="video">
-  var status = $(document.createElement('p')); // <p>
+  var container = $(document.createElement('div'));
+  container.addClass('video col-xs-12 col-sm-6 col-md-6');
+  var status = $(document.createElement('p'));
   status.html(partner.name);
-  container.attr('data-partner-guid', partner.guid); // <p data-partner-guid="abcd1234">
-  container.append(partner.videoElement); // <div class="video"><video/></div>
-  container.append(status); // 
+  container.attr('data-partner-guid', partner.guid);
+  container.append(partner.videoElement);
+  container.append(status);
 
-  // partner.videoElement.on('talking_stick.partner.ice_connection_state_change', function() {
-  //   status.html(partner.peerConnection.iceConnectionState);
-  // });
+  resizeVideos();
+
+  partner.videoElement.on('talking_stick.partner.ice_connection_state_change', function() {
+    status.html(partner.peerConnection.iceConnectionState);
+  });
 
   partner.videoElement.on('talking_stick.partner.cleanup', function() {
     container.remove();
@@ -144,6 +146,7 @@ $('#partnervideos').on('talking_stick.partner.media', resizeVideos);
 $('#partnervideos').on('talking_stick.partner.cleanup', cleanupPartner);
 $('#localvideo').on('talking_stick.connected', function() { $('#nav-microphone, #nav-video, #nav-exit').show() })
 $(window).resize(resizeVideos);
+$('#nav-exit').on('click', TalkingStick.disconnect);
 
 </script>
 
