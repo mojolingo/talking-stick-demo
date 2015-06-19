@@ -146,6 +146,7 @@ $('#partnervideos').on('talking_stick.partner.media', resizeVideos);
 $('#partnervideos').on('talking_stick.partner.cleanup', cleanupPartner);
 $('#localvideo').on('talking_stick.connected', function() { $('#nav-microphone, #nav-video, #nav-exit').show() })
 $(window).resize(resizeVideos);
+$('#nav-exit').on('click', TalkingStick.disconnect);
 
 </script>
 

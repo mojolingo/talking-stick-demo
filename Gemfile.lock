@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/mojolingo/talking_stick.git
-  revision: 9a73c9d998f34866d78759ac502714d217dba412
+  revision: cadb84c0610c4283121d72165105611b5cc8d3a8
   specs:
     talking_stick (0.0.1)
       jquery-rails (~> 4.0)
@@ -96,7 +96,7 @@ GEM
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     pg (0.18.2)
-    rack (1.6.2)
+    rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.1)
