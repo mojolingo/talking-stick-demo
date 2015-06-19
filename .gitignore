@@ -16,6 +16,7 @@
 !/log/.keep
 /tmp
 .DS_Store
+.*.sw*
 
 # Don't permit secrets to be checked in
 /config/database.yml
