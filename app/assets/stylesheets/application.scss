@@ -108,3 +108,8 @@ html body {
 .friends-video-row {
   padding-top: 70px;
 }
+
+/* Adjust the width of the video only while in the modal */
+.modal #localvideo {
+  max-width: inherit;
+}
