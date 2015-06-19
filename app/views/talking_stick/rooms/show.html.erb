@@ -1,41 +1,63 @@
-<% content_for(:title) { "#{@room.name} Group Conversation" } %>
-<div class="container-fluid" role="main" id="room" data-room-name="<%= @room.name %>">
-  <div class="row">
-    <div class="col-xs-3">
-      <div class="row">
-        <div class="col-xs-12">
-          <div id="localvideo-container"></div>
-        </div>
-        <div class="col-xs-12">
-          <span class="navbar-brand"><%= @room.name %></span>
+<div>
+  <% content_for(:title) { "#{@room.name} Group Conversation" } %>
+  <div class="container-fluid" role="main" id="room" data-room-name="<%= @room.name %>">
+    <div class="row">
+      <div class="col-xs-3 pull-right">
+        <div class="row">
+          <div class="col-xs-12">
+            <div id="localvideo-container"></div>
+          </div>
+          <div class="col-xs-12">
+            <span class="navbar-brand"><%= @room.name %></span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-xs-9">
-      <div id="partnervideos"></div>
+      <div class="col-xs-9">
+        <div id="partnervideos">
+        <!-- sample videos BEGIN here -->
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 four-friends-video-container">
+              <%= image_tag('green-pic.png', class: 'friends-video')%>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 four-friends-video-container">
+              <%= image_tag('green-pic.png', class: 'friends-video')%>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 four-friends-video-container">
+              <%= image_tag('green-pic.png', class: 'friends-video')%>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 four-friends-video-container">
+              <%= image_tag('green-pic.png', class: 'friends-video')%>
+            </div>
+          </div>
+
+        <!-- sample videos END here -->
+        </div>
+      </div>
     </div>
   </div>
+
+  <div class="modal fade" role="dialog" id="video-preview">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h3 class="modal-title"><%= t(:joining_room) %> "<%= @room.name %>"</h3>
+        </div>
+        <div class="modal-body">
+          <video id="localvideo" poster="<%= image_path 'talking_stick/loading.gif' %>" autoplay=true></video>
+          <p id="preview_instructions"><%= t(:video_grant_access) %></p>
+        </div>
+        <div class="modal-footer">
+          <button id="connect" type="button" class="btn btn-default btn-primary" data-dismiss="modal">Join</button>
+          <button href="javascript:history(-1);" type="button" class="btn">Exit</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 </div>
-
-<div class="modal fade" role="dialog" id="video-preview">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3 class="modal-title"><%= t(:joining_room) %> "<%= @room.name %>"</h3>
-      </div>
-      <div class="modal-body">
-        <video id="localvideo" poster="<%= image_path 'talking_stick/loading.gif' %>" autoplay=true></video>
-        <p id="preview_instructions"><%= t(:video_grant_access) %></p>
-      </div>
-      <div class="modal-footer">
-        <button id="connect" type="button" class="btn btn-default btn-primary" data-dismiss="modal">Join</button>
-        <button href="javascript:history(-1);" type="button" class="btn">Exit</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
 <script type="text/javascript">
 $(document).ready(function() {
   // Attempt to keep the modal from scrolling vertically
@@ -100,16 +122,17 @@ function isInt(value){
 }
 
 $('#localvideo').on('talking_stick.new_partner', function(ev, partner) {
-  var container = $(document.createElement('div'));
-  container.addClass('video');
-  var status = $(document.createElement('p'));
-  container.attr('data-partner-guid', partner.guid);
-  container.append(partner.videoElement);
-  container.append(status);
+  var container = $(document.createElement('div')); // <div>
+  container.addClass('video');  // <div class="video">
+  var status = $(document.createElement('p')); // <p>
+  status.html(partner.name);
+  container.attr('data-partner-guid', partner.guid); // <p data-partner-guid="abcd1234">
+  container.append(partner.videoElement); // <div class="video"><video/></div>
+  container.append(status); // 
 
-  partner.videoElement.on('talking_stick.partner.ice_connection_state_change', function() {
-    status.html(partner.peerConnection.iceConnectionState);
-  });
+  // partner.videoElement.on('talking_stick.partner.ice_connection_state_change', function() {
+  //   status.html(partner.peerConnection.iceConnectionState);
+  // });
 
   partner.videoElement.on('talking_stick.partner.cleanup', function() {
     container.remove();

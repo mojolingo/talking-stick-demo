@@ -19,6 +19,9 @@
 @import "font-awesome";
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
 
+
+// Whole site
+
 html body {
   background-color: #f1f2f2;
   font-family: 'Open Sans', sans-serif;
@@ -26,6 +29,10 @@ html body {
   font-size: 16px;
   line-height: 150%;
 }
+
+
+
+// Navbar
 
 .navbar {
   min-height: 80px;
@@ -76,3 +83,28 @@ html body {
   min-height: 99px;
 }
 
+
+
+// Talking Stick show.html.erb page
+
+.friends-video {
+  width: 100%;
+  padding: 20px 0;
+  height: auto;
+}
+
+.one-friends-video-container {
+  max-width: 1500px;
+}
+
+.two-friends-video-container {
+  max-width: 1500px;
+}
+
+.four-friends-video-container {
+  max-width: 700px;
+}
+
+.friends-video-row {
+  padding-top: 70px;
+}
