@@ -81,15 +81,8 @@ function startSession() {
 function resizeVideos() {
   var videoCollection = $('#partnervideos .video');
   var numVideos = videoCollection.length;
-  //var square = Math.sqrt(numVideos);
-  //if (!isInt(square)) {
-  //  // Round up to the next square
-  //  square = parseInt(square) + 1;
-  //}
-  //videoCollection.css('width', (100/square) + "%");
 
   var videoCountClass;
-  console.log("Number of videos", numVideos);
   switch(numVideos) {
   case 1:
     videoCountClass = 'one-friends-video-container';
@@ -111,14 +104,6 @@ function resizeVideos() {
 
 function cleanupPartner() {
   resizeVideos();
-}
-
-function isInt(value){
-  if((parseFloat(value) == parseInt(value)) && !isNaN(value)){
-    return true;
-  } else {
-    return false;
-  }
 }
 
 $('#localvideo').on('talking_stick.new_partner', function(ev, partner) {
