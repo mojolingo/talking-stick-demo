@@ -80,9 +80,6 @@ html body {
 .nav > li {
   padding-top: 10px;
   min-height: 99px;
-}
-
-#nav-microphone, #nav-cog, #nav-video, #nav-exit {
   min-width: 95px;
 }
 
@@ -116,4 +113,13 @@ html body {
 /* Adjust the width of the video only while in the modal */
 .modal #localvideo {
   max-width: inherit;
+}
+
+.video-partner-name, .room-name {
+  color: #f1f2f2;
+}
+
+.room-name, .your-name-container {
+  max-width: 200px;
+  text-align: right;
 }
