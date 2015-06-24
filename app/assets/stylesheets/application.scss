@@ -117,9 +117,13 @@ html body {
 
 .video-partner-name, .room-name {
   color: #f1f2f2;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .room-name, .your-name-container {
-  max-width: 200px;
+  max-width: 230px;
   text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

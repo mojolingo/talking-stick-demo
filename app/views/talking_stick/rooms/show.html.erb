@@ -83,6 +83,8 @@ function startSession() {
   // Gotta restart and re-mute the video after moving it
   $('#localvideo')[0].play();
   TalkingStick.connect($('#name').val());
+  var you = $('#name').val();
+  $('.room-name').html(you);
   $('#video-preview').modal('hide');
 };
 
