@@ -146,6 +146,7 @@ $('#partnervideos').on('talking_stick.partner.media', function() {
 $('#localvideo').on('talking_stick.disconnected', function() { 
   $('body').animate({'background-color': '#f1f2f2'}, 1500);
   $('video-partner-name, room-name').animate({'color': 'black'}, 1500);
+  document.location = '/';
 });
 $('#partnervideos').on('talking_stick.partner.cleanup', cleanupPartner);
 $('#localvideo').on('talking_stick.connected', function() { $('#nav-microphone, #nav-video, #nav-exit').show() })
