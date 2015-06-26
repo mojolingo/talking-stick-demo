@@ -1,3 +1,57 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#top-welcome-container {
+  background-color: #17A7E4;
+}
+
+#round-logo-title {
+  color: white;
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.round-logo-subtitle {
+  color: #D4D5D5;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  margin: 0;
+}
+
+#welcome-nav {
+  margin-bottom: 0;
+}
+
+#round-logo {
+    margin: auto;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    text-align: center;
+}
+
+.welcome-icon-brackets {
+  font-size: 1em !important;
+  padding: 0 5px;
+}
+
+
+.welcome-icons-brackets, .welcome-icons {
+  padding: 0 10px;
+}
+
+.welcome-icons {
+  font-size: 15em !important;
+}
+
+#talking-stick-logo {
+  margin: auto;
+  width: 100%;
+  height: auto;
+}
+
+#circle-down-arrow {
+  padding-top: 50px;
+  max-width: 50px;
+  height: auto;
+}

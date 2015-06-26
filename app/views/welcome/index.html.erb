@@ -1,2 +1,14 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div id="top-welcome-container">
+  <div>
+    <div id="round-logo">
+      <%= image_tag("talking_stick_logo.svg", id: "talking-stick-logo", :alt => "Talking Stick Logo") %>
+      <br>
+      <%= image_tag("circle_down_arrow.png", id: "circle-down-arrow", :alt => "Circle down arrow") %>
+    </div>
+  </div>
+</div>
+
+<script>
+  var maxVpw = $(window).width() / 2.5;
+  $('#talking-stick-logo').css('maxWidth', maxVpw);
+</script>

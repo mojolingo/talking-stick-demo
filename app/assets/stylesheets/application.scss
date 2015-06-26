@@ -93,6 +93,26 @@ html body {
   text-align: center;
 }
 
+#try-it-now-nav a {
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 2px;
+  color: #17A7E4;
+  font-weight: 400;
+  -webkit-transition: color .2s ease-out;
+  -moz-transition: color .2s ease-out;
+  -o-transition: color .2s ease-out;
+  transition: color .2s ease-out;
+}
+
+#try-it-now-nav a:hover {
+  background-color: rgba(0,0,0,0);
+  border: 2px solid white;
+  border-radius: 2px;
+  color: white;
+  font-weight: 400;
+}
+
 
 
 // Talking Stick show.html.erb page
