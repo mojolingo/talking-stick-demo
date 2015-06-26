@@ -33,7 +33,16 @@ html body {
 
 // Navbar
 
-.navbar {
+.navbar-inverse .navbar-nav > li > a {
+  color: #D4D5D5; 
+}
+
+.navbar-inverse {
+  background-color: #17A7E4;
+  border-color: #17A7E4;
+}
+
+#top-nav, #welcome-nav {
   min-height: 80px;
   border-radius: 0;
 }
