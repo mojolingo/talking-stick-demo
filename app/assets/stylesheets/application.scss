@@ -65,7 +65,7 @@ html body {
   font-size: 16px;
   margin: 0;
   padding: 0;
-  text-align: right;
+  text-align: center;
   font-family: Garamond Pro;
 }
 
@@ -80,6 +80,8 @@ html body {
 .nav > li {
   padding-top: 10px;
   min-height: 99px;
+  min-width: 95px;
+  text-align: center;
 }
 
 
@@ -112,4 +114,17 @@ html body {
 /* Adjust the width of the video only while in the modal */
 .modal #localvideo {
   max-width: inherit;
+}
+
+.video-partner-name, .room-name {
+  color: #f1f2f2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.room-name, .your-name-container {
+  max-width: 230px;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

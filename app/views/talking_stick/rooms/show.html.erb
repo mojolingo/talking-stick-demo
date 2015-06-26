@@ -6,8 +6,8 @@
         <div class="col-xs-12">
           <div id="localvideo-container"></div>
         </div>
-        <div class="col-xs-12">
-          <span class="navbar-brand"><%= @room.name %></span>
+        <div class="col-xs-12 your-name-container">
+          <span class="room-name">name container</span>
         </div>
       </div>
     </div>
@@ -30,8 +30,13 @@
         <p id="preview_instructions"><%= t(:video_grant_access) %></p>
       </div>
       <div class="modal-footer">
-        <button id="connect" type="button" class="btn btn-default btn-primary" data-dismiss="modal">Join</button>
-        <button href="javascript:history(-1);" type="button" class="btn">Exit</button>
+        <form id="connect" class="form-inline">
+          <div class="form-group">
+            <input name="name" id="name" placeholder="Your name" class='form-control'/>
+            <input type="submit" class="btn btn-default btn-primary" value="Join" class='form-control'/>
+            <button href="javascript:history(-1);" type="button" class="btn">Exit</button>
+          </div>
+        </form>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -62,7 +67,11 @@ $(document).ready(function() {
   };
   TalkingStick.init(options);
 
-  $('#connect').click(startSession);
+  $('#connect').submit(function (event) {
+    self.startSession();
+    event.preventDefault();
+  });
+
   $('#localvideo').on('talking_stick.local_media_setup', function() {
     $('#preview_instructions').html('<%= t(:video_intro) %>');
   });
@@ -73,7 +82,10 @@ function startSession() {
   $('#localvideo').height('auto');
   // Gotta restart and re-mute the video after moving it
   $('#localvideo')[0].play();
-  TalkingStick.connect();
+  TalkingStick.connect($('#name').val());
+  var you = $('#name').val();
+  $('.room-name').html(you);
+  $('#video-preview').modal('hide');
 };
 
 function resizeVideos() {
@@ -107,11 +119,12 @@ function cleanupPartner() {
 $('#localvideo').on('talking_stick.new_partner', function(ev, partner) {
   var container = $(document.createElement('div'));
   container.addClass('video');
-  var status = $(document.createElement('p'));
-  status.html(partner.name);
+  var partner_name = $(document.createElement('p'));
+  $(partner_name).addClass('video-partner-name pull-right');
+  partner_name.html(partner.name);
   container.attr('data-partner-guid', partner.guid);
   container.append(partner.videoElement);
-  container.append(status);
+  container.append(partner_name);
 
   resizeVideos();
 
@@ -127,10 +140,13 @@ $('#localvideo').on('talking_stick.new_partner', function(ev, partner) {
 });
 $('#partnervideos').on('talking_stick.partner.media', resizeVideos);
 $('#partnervideos').on('talking_stick.partner.media', function() { 
-  $('body').animate({'background-color': '#000'}, 1000)
+  $('body').animate({'background-color': '#000'}, 1500);
+  $('video-partner-name, room-name').animate({'color': '#f1f2f2'}, 1500);
 });
 $('#localvideo').on('talking_stick.disconnected', function() { 
-  $('body').animate({'background-color': '#f1f2f2'}, 1000)
+  $('body').animate({'background-color': '#f1f2f2'}, 1500);
+  $('video-partner-name, room-name').animate({'color': 'black'}, 1500);
+  document.location = '/';
 });
 $('#partnervideos').on('talking_stick.partner.cleanup', cleanupPartner);
 $('#localvideo').on('talking_stick.connected', function() { $('#nav-microphone, #nav-video, #nav-exit').show() })
