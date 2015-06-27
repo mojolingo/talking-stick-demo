@@ -35,16 +35,16 @@
 </div>
 
 <div id="bottom-welcome-container">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-4">
-        <section>
+      <div class="col-sm-12 col-md-4" id="form-section-container">
+        <section id="form-section">
           <h3 id="welcome-form-title">Title For Form</h3>
           <p id="welcome-form-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
           <p id="welcome-form-button-container"><%= link_to 'CLICK FOR FORM', '#', id: 'welcome-form-button' %></p>
         </section>
       </div>
-      <div class="col-sm-8">
+      <div class="col-sm-12 col-md-8" id="ts-background-container">
         <%= image_tag("talking-stick-background.png", id: "talking-stick-background", :alt => "talking-stick-background") %>
       </div> 
     </div>

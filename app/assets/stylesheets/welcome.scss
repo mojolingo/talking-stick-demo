@@ -105,7 +105,7 @@ footer {
 }
 
 #talking-stick-background {
-  max-width: 700px;
+  max-width: 900px;
   width: 100%;
   height: auto;
   padding-top: 150px;
@@ -211,4 +211,16 @@ section {
   text-decoration: none;
   color: #17A7E4;
   font-size: 14px;
+}
+
+#ts-background-container {
+  text-align: center;
+}
+
+#form-section {
+  float: right;
+}
+
+#form-section-container {
+  padding-right: 80px;
 }
