@@ -33,6 +33,43 @@
   </div>
 </div>
 
+<div id="bottom-welcome-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <section>
+          <h3 id="welcome-form-title">Title For Form</h3>
+          <p id="welcome-form-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+          <p id="welcome-form-button-container"><%= link_to 'CLICK FOR FORM', '#', id: 'welcome-form-button' %></p>
+        </section>
+      </div>
+      <div class="col-sm-8">
+        <%= image_tag("talking-stick-background.png", id: "talking-stick-background", :alt => "talking-stick-background") %>
+      </div> 
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <%= image_tag("ML_LOGO_WHITE_HIRES.png", id: "mojo-lingo-footer-logo", :alt => "Mojo Lingo logo") %>
+      </div>
+      <div class="col-sm-4">
+        <p id="welcome-try-it-now-button-container"><%= link_to 'TRY IT NOW', rooms_path, id: 'welcome-try-it-now-button' %></p>
+      </div>
+      <div class="col-sm-4">
+        <ul id="footer-nav">
+          <li><%= link_to 'Features', '#' %></li>
+          <li><%= link_to 'Docs', '#' %></li>
+          <li><%= link_to 'Contact us', '#' %></li>
+        </ul>
+      </div> 
+    </div>
+  </div>
+</footer>
+
 <script>
   var maxVpw = $(window).width() / 2.3;
   $('#talking-stick-logo').css('maxWidth', maxVpw);
