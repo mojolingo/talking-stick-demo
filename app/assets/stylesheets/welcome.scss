@@ -48,6 +48,10 @@
   height: auto;
 }
 
+#circle-down-arrow:hover {
+  transform: scale(1.1);
+}
+
 #middle-welcome-container {
   background-color: #98172C;
 }
@@ -128,6 +132,7 @@ section {
   padding-top: 30px;
   text-transform: uppercase;
   text-align: center;
+  color: black;
 }
 
 #welcome-form-body {
@@ -139,6 +144,14 @@ section {
 
 #welcome-form-button {
   background: #555555 !important;
+  border-radius: 2px;
+  color: white;
+  padding: 10px;
+}
+
+#welcome-form-button:hover {
+  background: black !important;
+  text-decoration: none;
   border-radius: 2px;
   color: white;
   padding: 10px;
@@ -165,10 +178,10 @@ section {
 }
 
 #welcome-try-it-now-button:hover {
-  background-color: black;
-  border: 2px solid #17A7E4;
+  background-color: white;
+  border: 2px solid white;
   border-radius: 2px;
-  color: white;
+  color: #17A7E4;
   padding: 10px;
   font-weight: 400;
 }
