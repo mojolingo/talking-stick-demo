@@ -8,7 +8,32 @@
   </div>
 </div>
 
+<div id="middle-welcome-container">
+  <div class="container">
+    <div class="row" id="first-welcome-midsection-row">
+      <div class="col-sm-6 feature-icons">
+        <i class="fa fa-users welcome-midsection-icons"></i>
+        <p class="welcome-midsection-feature-text">Provides easy group-based audio/video communication</p>
+      </div>
+      <div class="col-sm-6 feature-icons">
+        <%= image_tag("microphone_and_camera_icon.png", id: "microphone-and-camera-icon", class: 'welcome-midsection-images', :alt => "Microphone and camera icon") %>
+        <p class="welcome-midsection-feature-text">Select audio or audio + video</p>
+      </div>    
+    </div>
+    <div class="row">
+      <div class="col-sm-6 feature-icons">
+        <i class="fa fa-plug welcome-midsection-icons"></i>
+        <p class="welcome-midsection-feature-text">Plug & play functionality – works out of the box</p>
+      </div>
+      <div class="col-sm-6 feature-icons">
+        <%= image_tag("api_icon.svg", id: "api-icon", class: 'welcome-midsection-images' , :alt => "API icon") %>
+        <p class="welcome-midsection-feature-text">Simplicity at the API level, while maximizing the possibilities of integrating communication into existing Rails apps</p>
+      </div>    
+    </div>
+  </div>
+</div>
+
 <script>
-  var maxVpw = $(window).width() / 2.5;
+  var maxVpw = $(window).width() / 2.3;
   $('#talking-stick-logo').css('maxWidth', maxVpw);
 </script>

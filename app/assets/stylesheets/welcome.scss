@@ -25,7 +25,7 @@
 
 #round-logo {
     margin: auto;
-    padding-top: 40px;
+    padding-top: 20px;
     padding-bottom: 40px;
     text-align: center;
 }
@@ -35,23 +35,59 @@
   padding: 0 5px;
 }
 
-
-.welcome-icons-brackets, .welcome-icons {
-  padding: 0 10px;
-}
-
-.welcome-icons {
-  font-size: 15em !important;
-}
-
 #talking-stick-logo {
   margin: auto;
   width: 100%;
   height: auto;
+  padding: 0 20px;
 }
 
 #circle-down-arrow {
   padding-top: 50px;
   max-width: 50px;
   height: auto;
+}
+
+#middle-welcome-container {
+  background-color: #98172C;
+}
+
+.welcome-midsection-icons {
+  font-size: 10em !important;
+}
+
+#api-icon {
+  height: 100px !important;
+  margin-top: 55px !important;
+}
+
+#microphone-and-camera-icon {
+  height: 160px !important;
+}
+
+.welcome-midsection-feature-text {
+  color: white;
+  padding-top: 15px;
+  padding-bottom: 40px;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 300;
+  max-width: 225px;
+  margin: auto;
+  min-height: 75px;
+}
+
+.welcome-midsection-icons, #microphone-and-camera-icon, #api-icon {
+  margin: auto;
+  text-align: center;
+}
+
+.feature-icons {
+  margin: 30px auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+#first-welcome-midsection-row {
+  padding-top: 60px;
 }
