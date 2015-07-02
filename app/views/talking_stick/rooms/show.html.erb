@@ -128,10 +128,6 @@ $('#localvideo').on('talking_stick.new_partner', function(ev, partner) {
 
   resizeVideos();
 
-  partner.videoElement.on('talking_stick.partner.ice_connection_state_change', function() {
-    status.html(partner.peerConnection.iceConnectionState);
-  });
-
   partner.videoElement.on('talking_stick.partner.cleanup', function() {
     container.remove();
   });
