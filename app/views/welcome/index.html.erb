@@ -1,0 +1,77 @@
+<div id="top-welcome-container">
+  <div>
+    <div id="round-logo">
+      <%= image_tag("talking_stick_logo.svg", id: "talking-stick-logo", :alt => "Talking Stick Logo") %>
+      <br>
+      <a href="#middle-section" rel="" id="anchor1" class="anchorLink" ><%= image_tag("circle_down_arrow.svg", id: "circle-down-arrow", :alt => "Circle down arrow") %></a>
+    </div>
+  </div>
+</div>
+
+<div id="middle-welcome-container">
+  <div class="container">
+    <a NAME="middle-section"></a>
+    <div class="row" id="first-welcome-midsection-row">
+      <div class="col-sm-6 feature-icons">
+        <i class="fa fa-users welcome-midsection-icons"></i>
+        <p class="welcome-midsection-feature-text">Provides easy group-based audio/video communication</p>
+      </div>
+      <div class="col-sm-6 feature-icons">
+        <%= image_tag("microphone_and_camera_icon.png", id: "microphone-and-camera-icon", class: 'welcome-midsection-images', :alt => "Microphone and camera icon") %>
+        <p class="welcome-midsection-feature-text">Select audio or audio + video</p>
+      </div>    
+    </div>
+    <div class="row">
+      <div class="col-sm-6 feature-icons">
+        <i class="fa fa-plug welcome-midsection-icons"></i>
+        <p class="welcome-midsection-feature-text">Plug & play functionality – works out of the box</p>
+      </div>
+      <div class="col-sm-6 feature-icons">
+        <%= image_tag("api_icon.svg", id: "api-icon", class: 'welcome-midsection-images' , :alt => "API icon") %>
+        <p class="welcome-midsection-feature-text">Simplicity at the API level, while maximizing the possibilities of integrating communication into existing Rails apps</p>
+      </div>    
+    </div>
+  </div>
+</div>
+
+<div id="bottom-welcome-container">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 col-md-4" id="form-section-container">
+        <section id="form-section">
+          <h3 id="welcome-form-title">Title For Form</h3>
+          <p id="welcome-form-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+          <p id="welcome-form-button-container"><%= link_to 'CLICK FOR FORM', '#', id: 'welcome-form-button' %></p>
+        </section>
+      </div>
+      <div class="col-sm-12 col-md-8" id="ts-background-container">
+        <%= image_tag("talking-stick-background.png", id: "talking-stick-background", :alt => "talking-stick-background") %>
+      </div> 
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <%= image_tag("ML_LOGO_WHITE_HIRES.png", id: "mojo-lingo-footer-logo", :alt => "Mojo Lingo logo") %>
+      </div>
+      <div class="col-sm-4">
+        <p id="welcome-try-it-now-button-container"><%= link_to 'TRY IT NOW', rooms_path, id: 'welcome-try-it-now-button' %></p>
+      </div>
+      <div class="col-sm-4">
+        <ul id="footer-nav">
+          <li><%= link_to 'Features', '#middle-section' %></li>
+          <li><%= link_to 'Docs', 'https://github.com/mojolingo/talking_stick' %></li>
+          <li><%= link_to 'Contact us', '#' %></li>
+        </ul>
+      </div> 
+    </div>
+  </div>
+</footer>
+
+<script>
+  var maxVpw = $(window).width() / 2.3;
+  $('#talking-stick-logo').css('maxWidth', maxVpw);
+</script>

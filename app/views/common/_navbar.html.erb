@@ -1,42 +1,72 @@
 <nav id="top-nav" class="navbar navbar-default" role="navigation">
-  <div class="container">
+<% if self.controller_name == 'welcome' %>
 
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-        <%= link_to rooms_path, class: "navbar-brand", id: "mor-brand" do %>
-          <%= image_tag("ML_LOGO_WHITE_HIRES.png", class: "mojo-logo", :alt => "Talking Stick") %>
-        <% end %>
+  <nav id="welcome-nav" class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+          <%= link_to '/', class: "navbar-brand", id: "mor-brand" do %>
+            <%= image_tag("ML_LOGO_WHITE_HIRES.png", class: "mojo-logo", id: 'welcome-navbar-mojo-logo', :alt => "Talking Stick") %>
+          <% end %>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right" id="welcome-nav-ul">
+          <li class="welcome-li"><%= link_to 'Features', '#middle-section' %></li>
+          <li class="welcome-li"><%= link_to 'Docs', 'https://github.com/mojolingo/talking_stick' %></li>
+          <li id="try-it-now-nav" class="welcome-li"><%= link_to 'Try it now!', rooms_path %></li>
+          <li class="welcome-li"><%= link_to 'Contact us', '#' %></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li id="nav-microphone"><%= link_to '#' do %>
-          <i class="fa fa-microphone fa-3x"></i><br>
-          <span class="nav-icon-text">mute</span>
+<% else %>
+
+  <nav id="top-nav" class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+          <%= link_to '/', class: "navbar-brand", id: "mor-brand" do %>
+            <%= image_tag("ML_LOGO_WHITE_HIRES.png", class: "mojo-logo", :alt => "Talking Stick") %>
           <% end %>
-        </li>
-        <li id="nav-video"><%= link_to '#' do %>
-          <i class="fa fa-video-camera fa-3x"></i><br>
-          <span class="nav-icon-text">off</span>
-          <% end %>
-        </li>
-        <li id="nav-exit"><%= link_to '#' do %>
-          <i class="fa fa-sign-out fa-3x"></i><br> 
-          <span class="nav-icon-text">hang up</span>
-          <% end %>
-        </li>
-        <li id="nav-settings"><%= link_to '#' do %>
-          <i class="fa fa-cog fa-3x"></i><br> 
-          <span class="nav-icon-text">settings</span>
-          <% end %>
-        </li>
-      </ul>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li id="nav-microphone"><%= link_to '#' do %>
+            <i class="fa fa-microphone fa-3x"></i><br>
+            <span class="nav-icon-text">mute</span>
+            <% end %>
+          </li>
+          <li id="nav-video"><%= link_to '#' do %>
+            <i class="fa fa-video-camera fa-3x"></i><br>
+            <span class="nav-icon-text">off</span>
+            <% end %>
+          </li>
+          <li id="nav-exit"><%= link_to '#' do %>
+            <%= image_tag("telephone.svg", id: "hang-up-icon", :alt => "Hang up call") %>
+            <br>
+            <span class="nav-icon-text">hang up</span>
+            <% end %>
+          </li>
+          <li id="nav-settings"><%= link_to '#' do %>
+            <i class="fa fa-cog fa-3x"></i><br> 
+            <span class="nav-icon-text">settings</span>
+            <% end %>
+          </li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
   </div>
-</nav>
+<% end %>

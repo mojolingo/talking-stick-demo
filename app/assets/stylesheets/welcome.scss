@@ -1,0 +1,226 @@
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#top-welcome-container {
+  background-color: #17A7E4;
+}
+
+#round-logo-title {
+  color: white;
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.round-logo-subtitle {
+  color: #D4D5D5;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  margin: 0;
+}
+
+#welcome-nav {
+  margin-bottom: 0;
+}
+
+#round-logo {
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    text-align: center;
+}
+
+.welcome-icon-brackets {
+  font-size: 1em !important;
+  padding: 0 5px;
+}
+
+#talking-stick-logo {
+  margin: auto;
+  width: 100%;
+  height: auto;
+  padding: 0 20px;
+}
+
+#circle-down-arrow {
+  padding-top: 50px;
+  max-width: 50px;
+  height: auto;
+}
+
+#circle-down-arrow:hover {
+  transform: scale(1.1);
+}
+
+#middle-welcome-container {
+  background-color: #98172C;
+}
+
+.welcome-midsection-icons {
+  font-size: 10em !important;
+}
+
+#api-icon {
+  height: 100px !important;
+  margin-top: 55px !important;
+}
+
+#microphone-and-camera-icon {
+  height: 160px !important;
+}
+
+.welcome-midsection-feature-text {
+  color: white;
+  padding-top: 15px;
+  padding-bottom: 40px;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 300;
+  max-width: 225px;
+  margin: auto;
+  min-height: 75px;
+}
+
+.welcome-midsection-icons, #microphone-and-camera-icon, #api-icon {
+  margin: auto;
+  text-align: center;
+}
+
+.feature-icons {
+  margin: 30px auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+#first-welcome-midsection-row {
+  padding-top: 60px;
+}
+
+#bottom-welcome-container {
+  background-color: #AEA59E;
+}
+
+footer {
+  background-color: black;
+}
+
+#talking-stick-background {
+  max-width: 900px;
+  width: 100%;
+  height: auto;
+  padding-top: 150px;
+}
+
+#mojo-lingo-footer-logo {
+  max-height: 60px;
+  width: auto; 
+  margin: 30px 0 20px 0;
+}
+
+section {
+  background-color: #F3F3F3;
+  width: 245px;
+  margin-top: 200px;
+  margin-left: 50px;
+}
+
+#welcome-form-title, #welcome-form-button {
+  font-size: 20px;
+}
+
+#welcome-form-title {
+  padding-top: 30px;
+  text-transform: uppercase;
+  text-align: center;
+  color: black;
+}
+
+#welcome-form-body {
+  font-size: 14px;
+  color: #7F7F7F;
+  font-weight: 300;
+  padding: 5px 30px 20px;
+}
+
+#welcome-form-button {
+  background: #555555 !important;
+  border-radius: 2px;
+  color: white;
+  padding: 10px;
+}
+
+#welcome-form-button:hover {
+  background: black !important;
+  text-decoration: none;
+  border-radius: 2px;
+  color: white;
+  padding: 10px;
+}
+
+#welcome-form-button-container {
+  margin: 0 auto 30px;
+  text-align: center;
+  min-height: 67px;
+}
+
+#welcome-try-it-now-button {
+  background-color: #17A7E4;
+  border: 2px solid #17A7E4;
+  border-radius: 2px;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  -webkit-transition: color .2s ease-out;
+  -moz-transition: color .2s ease-out;
+  -o-transition: color .2s ease-out;
+  transition: color .2s ease-out;
+  font-weight: 400;
+}
+
+#welcome-try-it-now-button:hover {
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 2px;
+  color: #17A7E4;
+  padding: 10px;
+  font-weight: 400;
+}
+
+#welcome-try-it-now-button-container {
+  text-align: center;
+  margin: 50px 0 30px;
+}
+
+#footer-nav {
+  text-align: right;
+  list-style-type: none;
+  margin: 30px 20px 30px 0;
+}
+
+#footer-nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  -webkit-transition: color .2s ease-out;
+  -moz-transition: color .2s ease-out;
+  -o-transition: color .2s ease-out;
+  transition: color .2s ease-out;
+}
+
+#footer-nav a:hover {
+  text-decoration: none;
+  color: #17A7E4;
+  font-size: 14px;
+}
+
+#ts-background-container {
+  text-align: center;
+}
+
+#form-section {
+  float: right;
+}
+
+#form-section-container {
+  padding-right: 80px;
+}

@@ -33,7 +33,24 @@ html body {
 
 // Navbar
 
-.navbar {
+#hang-up-icon {
+  width: 48px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #D4D5D5; 
+}
+
+#welcome-navbar-mojo-logo {
+  margin-left: 20px;
+}
+
+.navbar-inverse {
+  background-color: #17A7E4;
+  border-color: #17A7E4;
+}
+
+#top-nav, #welcome-nav {
   min-height: 80px;
   border-radius: 0;
 }
@@ -82,6 +99,48 @@ html body {
   min-height: 99px;
   min-width: 95px;
   text-align: center;
+}
+
+.navbar-collapse, .navbar-form {
+  border: 0px solid rgba(0,0,0,0);
+  box-shadow: inset 0 1px 0 rgba(0,0,0,0);
+}
+
+.navbar-toggle:hover, .navbar-toggle:focus {
+  background-color: rgba(0,0,0,0) !important;
+  border-color: white !important;
+}
+
+.navbar-toggle {
+  border-color: rgba(0,0,0,0) !important;
+}
+
+.icon-bar {
+  background-color: white !important;
+}
+
+#welcome-nav-ul > li {
+  padding-top: 25px;
+}
+
+#try-it-now-nav a {
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 2px;
+  color: #17A7E4;
+  font-weight: 400;
+  -webkit-transition: color .2s ease-out;
+  -moz-transition: color .2s ease-out;
+  -o-transition: color .2s ease-out;
+  transition: color .2s ease-out;
+}
+
+#try-it-now-nav a:hover {
+  background-color: rgba(0,0,0,0);
+  border: 2px solid white;
+  border-radius: 2px;
+  color: white;
+  font-weight: 400;
 }
 
 
