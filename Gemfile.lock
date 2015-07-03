@@ -1,7 +1,6 @@
 GIT
   remote: git://github.com/mojolingo/talking_stick.git
-  revision: 15b98d0de57f0acef78fdcc3c04c4f737f52ec3a
-  branch: feature/signaling_fix
+  revision: a9ea923f62f437ff7742eef9e42617132a8b73ff
   specs:
     talking_stick (0.0.1)
       jquery-rails (~> 4.0)
