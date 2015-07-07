@@ -79,6 +79,7 @@
   </div>
 </div>
 
+<!-- Room Join Modal -->
 <div class="modal fade" role="dialog" id="video-preview">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -102,6 +103,31 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<!-- A/V Settings Modal -->
+<div class="modal fade" id="avModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Audio/Video Settings</h4>
+      </div>
+      <div class="modal-body av-modal-body">
+        <div class="select">
+          <span class="fa fa-microphone fa-lg av-modal-icons"></span><select id="audioSource" class="form-control av-modal-choices"></select>
+        </div>
+
+        <div class="select">
+          <span class="fa fa-video-camera fa-lg av-modal-icons"></span><select id="videoSource" class="form-control av-modal-choices"></select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript">
 $(document).ready(function() {
   // Attempt to keep the modal from scrolling vertically
@@ -202,7 +228,6 @@ $('#localvideo').on('talking_stick.new_partner', function(ev, partner) {
   $('#partnervideos').append(container);
 });
 $('#partnervideos').on('talking_stick.partner.media', resizeVideos);
-
 $('#localvideo').on('talking_stick.disconnected', function() {
   document.location = '/';
 });
@@ -258,6 +283,77 @@ client.on("ready", function(readyEvent) {
 $('#copy-form').on("submit", function (e) {
   e.preventDefault();
 });
+
+'use strict';
+
+var videoElement = document.querySelector('video');
+var audioSelect = document.querySelector('select#audioSource');
+var videoSelect = document.querySelector('select#videoSource');
+
+navigator.getUserMedia = navigator.getUserMedia ||
+  navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+function gotSources(sourceInfos) {
+  for (var i = 0; i !== sourceInfos.length; ++i) {
+    var sourceInfo = sourceInfos[i];
+    var option = document.createElement('option');
+    option.value = sourceInfo.id;
+    if (sourceInfo.kind === 'audio') {
+      option.text = sourceInfo.label || 'microphone ' +
+        (audioSelect.length + 1);
+      audioSelect.appendChild(option);
+    } else if (sourceInfo.kind === 'video') {
+      option.text = sourceInfo.label || 'camera ' + (videoSelect.length + 1);
+      videoSelect.appendChild(option);
+    } else {
+      console.log('Some other kind of source: ', sourceInfo);
+    }
+  }
+}
+
+if (typeof MediaStreamTrack === 'undefined' ||
+    typeof MediaStreamTrack.getSources === 'undefined') {
+  alert('This browser does not support MediaStreamTrack.\n\nTry Chrome.');
+} else {
+  MediaStreamTrack.getSources(gotSources);
+}
+
+function successCallback(stream) {
+  window.stream = stream; // make stream available to console
+  videoElement.src = window.URL.createObjectURL(stream);
+  videoElement.play();
+}
+
+function errorCallback(error) {
+  console.log('navigator.getUserMedia error: ', error);
+}
+
+function start() {
+  if (!!window.stream) {
+    videoElement.src = null;
+    window.stream.stop();
+  }
+  var audioSource = audioSelect.value;
+  var videoSource = videoSelect.value;
+  var constraints = {
+    audio: {
+      optional: [{
+        sourceId: audioSource
+      }]
+    },
+    video: {
+      optional: [{
+        sourceId: videoSource
+      }]
+    }
+  };
+  navigator.getUserMedia(constraints, successCallback, errorCallback);
+}
+
+audioSelect.onchange = start;
+videoSelect.onchange = start;
+
+start();
 
 </script>
 

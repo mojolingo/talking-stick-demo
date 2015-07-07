@@ -33,6 +33,27 @@ html body {
 
 // Navbar
 
+.av-modal-choices {
+  display: inline-block;
+  width: 80%;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+#audioSource, #videoSource {
+  background-color: #f5f7f8;
+  border-color: #e6eaed;
+}
+
+.av-modal-body {
+  display: block;
+}
+
+.av-modal-icons {
+  color: #4d5659 !important;
+  padding: 5px;
+  width: 30px;
+}
+
 #hang-up-icon {
   width: 48px;
 }
