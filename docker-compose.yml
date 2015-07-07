@@ -1,0 +1,19 @@
+web:
+  build: .
+  ports:
+    - "3000:3000"
+  volumes:
+    - .:/app
+  links:
+    - db
+  environment:
+    PORT: 3000
+    RACK_ENV: development
+    DATABASE_URL: postgres://postgres:abc123@db/talking_stick_dev
+
+db:
+  image: postgres:9.3
+  ports:
+    - "5432"
+  environment:
+    POSTGRES_PASSWORD: abc123
