@@ -34,7 +34,7 @@
           <div class="form-group">
             <input name="name" id="name" placeholder="Your name" class='form-control'/>
             <input type="submit" class="btn btn-default btn-primary" value="Join" class='form-control'/>
-            <button href="javascript:history(-1);" type="button" class="btn">Exit</button>
+            <button type="button" class="btn exit">Exit</button>
           </div>
         </form>
       </div>
@@ -166,6 +166,16 @@ $('#nav-video').on('click', function() {
   } else {
     TalkingStick.muteVideo();
     $('#nav-video i').css('color', 'black');
+  }
+});
+
+$('button.close, button.exit').on('click', function() {
+  document.location = '/';
+})
+
+$(document).bind('keypress', function(e) {
+  if (e.keyCode === 13) {  // keyCode 13 is the return key
+    $('#connect input.btn-primary').trigger('click');
   }
 });
 
