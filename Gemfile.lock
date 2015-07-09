@@ -1,6 +1,7 @@
 GIT
   remote: git://github.com/mojolingo/talking_stick.git
-  revision: a9ea923f62f437ff7742eef9e42617132a8b73ff
+  revision: cd0d0e4daec0cd76c512714d32d3230fd8706b03
+  branch: connect-settings-cog-97823794
   specs:
     talking_stick (0.0.1)
       jquery-rails (~> 4.0)
