@@ -135,13 +135,8 @@ $('#localvideo').on('talking_stick.new_partner', function(ev, partner) {
   $('#partnervideos').append(container);
 });
 $('#partnervideos').on('talking_stick.partner.media', resizeVideos);
-$('#partnervideos').on('talking_stick.partner.media', function() { 
-  $('body').animate({'background-color': '#000'}, 1500);
-  $('video-partner-name, room-name').animate({'color': '#f1f2f2'}, 1500);
-});
-$('#localvideo').on('talking_stick.disconnected', function() { 
-  $('body').animate({'background-color': '#f1f2f2'}, 1500);
-  $('video-partner-name, room-name').animate({'color': 'black'}, 1500);
+
+$('#localvideo').on('talking_stick.disconnected', function() {
   document.location = '/';
 });
 $('#partnervideos').on('talking_stick.partner.cleanup', cleanupPartner);
