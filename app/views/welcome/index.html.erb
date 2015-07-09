@@ -3,14 +3,14 @@
     <div id="round-logo">
       <%= image_tag("talking_stick_logo.svg", id: "talking-stick-logo", :alt => "Talking Stick Logo") %>
       <br>
-      <a href="#middle-section" rel="" id="anchor1" class="anchorLink" ><%= image_tag("circle_down_arrow.svg", id: "circle-down-arrow", :alt => "Circle down arrow") %></a>
+      <a href="#talking-stick-features" rel="" id="anchor1" class="anchorLink" ><%= image_tag("circle_down_arrow.svg", id: "circle-down-arrow", :alt => "Circle down arrow") %></a>
     </div>
   </div>
 </div>
 
 <div id="middle-welcome-container">
   <div class="container">
-    <a NAME="middle-section"></a>
+    <a name="talking-stick-features"></a>
     <div class="row" id="first-welcome-midsection-row">
       <div class="col-sm-6 feature-icons">
         <i class="fa fa-users welcome-midsection-icons"></i>
@@ -19,7 +19,7 @@
       <div class="col-sm-6 feature-icons">
         <%= image_tag("microphone_and_camera_icon.png", id: "microphone-and-camera-icon", class: 'welcome-midsection-images', :alt => "Microphone and camera icon") %>
         <p class="welcome-midsection-feature-text">Select audio or audio + video</p>
-      </div>    
+      </div>
     </div>
     <div class="row">
       <div class="col-sm-6 feature-icons">
@@ -29,7 +29,7 @@
       <div class="col-sm-6 feature-icons">
         <%= image_tag("api_icon.svg", id: "api-icon", class: 'welcome-midsection-images' , :alt => "API icon") %>
         <p class="welcome-midsection-feature-text">Simplicity at the API level, while maximizing the possibilities of integrating communication into existing Rails apps</p>
-      </div>    
+      </div>
     </div>
   </div>
 </div>
@@ -46,7 +46,7 @@
       </div>
       <div class="col-sm-12 col-md-8" id="ts-background-container">
         <%= image_tag("talking-stick-background.png", id: "talking-stick-background", :alt => "talking-stick-background") %>
-      </div> 
+      </div>
     </div>
   </div>
 </div>
@@ -62,11 +62,11 @@
       </div>
       <div class="col-sm-4">
         <ul id="footer-nav">
-          <li><%= link_to 'Features', '#middle-section' %></li>
+          <li><%= link_to 'Features', '#talking-stick-features' %></li>
           <li><%= link_to 'Docs', 'https://github.com/mojolingo/talking_stick' %></li>
           <li><%= link_to 'Contact us', '#' %></li>
         </ul>
-      </div> 
+      </div>
     </div>
   </div>
 </footer>

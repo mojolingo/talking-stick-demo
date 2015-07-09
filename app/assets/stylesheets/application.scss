@@ -50,8 +50,13 @@ html body {
   border-color: #17A7E4;
 }
 
-#top-nav, #welcome-nav {
+#welcome-nav {
   min-height: 80px;
+  border-radius: 0;
+}
+
+#top-nav {
+  min-height: 101px;
   border-radius: 0;
 }
 
@@ -68,7 +73,7 @@ html body {
   max-height: 60px;
 }
 
-#nav-microphone, #nav-video, #nav-exit {
+#nav-microphone, #nav-video, #nav-exit, #nav-settings {
   display: none;
 }
 
@@ -187,7 +192,75 @@ html body {
 
 .room-name, .your-name-container {
   max-width: 230px;
+}
+
+#invite-to-room-url {
+  text-align: left;
+}
+
+#invite-to-room-url {
+  font-size: 12px;
+  font-family: Garamond Pro, Garamond, Serif;
+}
+
+.your-name-container > div {
+  padding-top: 80px;
+}
+
+.your-name-container > div p {
+  margin-bottom: 5px;
+  color: #7F7F7F;
+  font-weight: 300;
+}
+
+.hide-invite-url {
+  display: none;
+}
+
+#invite-link-label, #invite-copied-indicator {
+  color: #7F7F7F;
+}
+
+#invite-link-label {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+#copy-button {
+  background-color: #98172c;
+  width: 40px;
+  border: 1px solid #98172c;
+  padding: 5px;
+  margin: 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0;
+}
+
+#copy-button:focus {
+  outline: none;
+}
+
+.zeroclipboard-is-hover {
+  background-color: #E42342 !important;
+  border-color: #E42342 !important;
+}
+
+#invite-copied-indicator {
+  display: none;
+  padding-top: 10px;
+  font-size: 12px;
   text-align: right;
-  overflow: hidden;
-  text-overflow: ellipsis;
+}
+
+div.input-group-sm > .form-control {
+  background-color: #595959;
+  color: white;
+  border-color: #7F7F7F;
+}
+
+#clipboard-button {
+  color: white;
 }

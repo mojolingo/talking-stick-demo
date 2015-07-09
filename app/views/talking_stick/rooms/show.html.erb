@@ -8,6 +8,23 @@
         </div>
         <div class="col-xs-12 your-name-container">
           <span class="room-name">name container</span>
+          <br>
+            <div>
+              <form id="copy-form">
+                <label for="invite-link-input" id="invite-link-label">URL to invite others</label>
+                <div class="input-group input-group-sm">
+                  <input type="text" id="invite-link-input" class="form-control" value="<%= request.original_url %>">
+                  <span class="input-group-btn">
+                    <button class="btn" id="copy-button" data-clipboard-text="<%= request.original_url %>" title="Click to copy URL" >
+                      <i class="fa fa-clipboard fa-lg" id="clipboard-button"></i>
+                    </button>
+                  </span>
+                </div>
+              </form>
+              <p id="invite-copied-indicator">Copied to clipboard</p>
+
+              <p id="invite-to-room-url" class="hide-invite-url"><%= request.original_url %></p>
+            </div>
         </div>
       </div>
     </div>
@@ -146,7 +163,7 @@ $('#localvideo').on('talking_stick.disconnected', function() {
   document.location = '/';
 });
 $('#partnervideos').on('talking_stick.partner.cleanup', cleanupPartner);
-$('#localvideo').on('talking_stick.connected', function() { $('#nav-microphone, #nav-video, #nav-exit').show() })
+$('#localvideo').on('talking_stick.connected', function() { $('#nav-microphone, #nav-video, #nav-exit, #nav-settings').show() })
 $(window).resize(resizeVideos);
 $('#nav-exit').on('click', TalkingStick.disconnect);
 
@@ -183,6 +200,19 @@ $(document).bind('keypress', function(e) {
   if (e.keyCode === 13) {  // keyCode 13 is the return key
     $('#connect input.btn-primary').trigger('click');
   }
+});
+
+// Code to copy room URL to invite others to join
+var client = new ZeroClipboard(document.getElementById("copy-button"));
+
+client.on("ready", function(readyEvent) {
+  client.on("aftercopy", function(event) {
+    $('#invite-copied-indicator').fadeIn(400).delay(1500).fadeOut(1000);
+  });
+});
+
+$('#copy-form').on("submit", function (e) {
+  e.preventDefault();
 });
 
 </script>

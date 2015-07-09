@@ -15,4 +15,5 @@
 //= require twitter/bootstrap
 //= require talking_stick/application.js
 //= require turbolinks
+//= require zeroclipboard
 //= require_tree .
