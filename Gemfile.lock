@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/mojolingo/talking_stick.git
-  revision: cd0d0e4daec0cd76c512714d32d3230fd8706b03
+  revision: a489346cad274dedb5e6d5933d541ae63d4b5c51
   branch: connect-settings-cog-97823794
   specs:
     talking_stick (0.0.1)
@@ -45,7 +45,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    arel (6.0.0)
+    arel (6.0.1)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
