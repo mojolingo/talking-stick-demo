@@ -21,7 +21,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'talking_stick', github: 'mojolingo/talking_stick'
+gem 'talking_stick', github: 'mojolingo/talking_stick', branch: 'connect-settings-cog-97823794'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

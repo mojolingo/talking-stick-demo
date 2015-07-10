@@ -16,7 +16,7 @@
         <% end %>
     </div>
     <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
+      <ul id="nav-roomcontrols" class="nav navbar-nav navbar-right">
         <li id="nav-microphone"><%= link_to '#' do %>
           <i class="fa fa-microphone fa-3x"></i><br>
           <span class="nav-icon-text">mute</span>
@@ -34,7 +34,7 @@
           <% end %>
         </li>
         <li id="nav-settings"><%= link_to '#' do %>
-          <i class="fa fa-cog fa-3x"></i><br>
+          <i class="fa fa-cog fa-3x" data-toggle="modal" data-target="#avModal"></i><br>
           <span class="nav-icon-text">settings</span>
           <% end %>
         </li>
@@ -51,7 +51,7 @@
           <div id="localvideo-container"></div>
         </div>
         <div class="col-xs-12 your-name-container">
-          <span class="room-name">name container</span>
+          <span class="my-name"></span>
           <br>
             <div>
               <form id="copy-form">
@@ -79,6 +79,7 @@
   </div>
 </div>
 
+<!-- Room Join Modal -->
 <div class="modal fade" role="dialog" id="video-preview">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -93,8 +94,8 @@
       <div class="modal-footer">
         <form id="connect" class="form-inline">
           <div class="form-group">
-            <input name="name" id="name" placeholder="Your name" class='form-control'/>
-            <input type="submit" class="btn btn-default btn-primary" value="Join" class='form-control'/>
+            <input name="name" placeholder="<% t(:your_name) %>" class='form-control'/>
+            <input name="join" type="submit" class="btn btn-default btn-primary" value="<%= t(:join) %>" class='form-control' disabled/>
             <button type="button" class="btn exit">Exit</button>
           </div>
         </form>
@@ -102,6 +103,31 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<!-- A/V Settings Modal -->
+<div class="modal fade" id="avModal" tabindex="-1" role="dialog" aria-labelledby="avModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></div>
+        <h4 class="modal-title" id="avModalLabel">Audio/Video Settings</h4>
+      </div>
+      <div class="modal-body av-modal-body">
+        <div class="select">
+          <span class="fa fa-microphone fa-lg av-modal-icons"></span><select id="audioSourceSelector" class="form-control av-modal-choices"></select>
+        </div>
+
+        <div class="select">
+          <span class="fa fa-video-camera fa-lg av-modal-icons"></span><select id="videoSourceSelector" class="form-control av-modal-choices"></select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div type="button" class="btn btn-success" data-dismiss="modal">Save</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript">
 $(document).ready(function() {
   // Attempt to keep the modal from scrolling vertically
@@ -135,6 +161,7 @@ $(document).ready(function() {
 
   $('#localvideo').on('talking_stick.local_media_setup', function() {
     $('#preview_instructions').html('<%= t(:video_intro) %>');
+    $('form#connect input[name="join"]').attr('disabled', false);
   });
 });
 
@@ -143,9 +170,9 @@ function startSession() {
   $('#localvideo').height('auto');
   // Gotta restart and re-mute the video after moving it
   $('#localvideo')[0].play();
-  TalkingStick.connect($('#name').val());
-  var you = $('#name').val();
-  $('.room-name').html(you);
+  var myName = $('input[name="name"]').val() 
+  TalkingStick.connect(myName);
+  $('.my-name').html(myName);
   $('#video-preview').modal('hide');
 };
 
@@ -202,12 +229,41 @@ $('#localvideo').on('talking_stick.new_partner', function(ev, partner) {
   $('#partnervideos').append(container);
 });
 $('#partnervideos').on('talking_stick.partner.media', resizeVideos);
-
 $('#localvideo').on('talking_stick.disconnected', function() {
   document.location = '/';
 });
+$('#localvideo').on('talking_stick.devices_ready', function() {
+  var $audioSelect = $('#audioSourceSelector');
+  var $videoSelect = $('#videoSourceSelector');
+
+  $.each(TalkingStick.devices, function(i, device) {
+    var option = document.createElement('option');
+    option.value = device.id;
+    option.text = device.label;
+    switch(device.kind) {
+    case 'audio':
+        $audioSelect.append(option);
+      break;
+    case 'video':
+        $videoSelect.append(option);
+      break;
+    // ignore devices that are not of kind audio or video
+    }
+  });
+
+  var applyDeviceSelection = function() {
+    var sourceIds = {
+      audio: $audioSelect.val(),
+      video: $videoSelect.val(),
+    }
+    TalkingStick.applyDeviceSelections(sourceIds);
+  };
+  $audioSelect.on('change', applyDeviceSelection);
+  $videoSelect.on('change', applyDeviceSelection);
+})
+
 $('#partnervideos').on('talking_stick.partner.cleanup', cleanupPartner);
-$('#localvideo').on('talking_stick.connected', function() { $('#nav-microphone, #nav-video, #nav-exit, #nav-settings').show() })
+$('#localvideo').on('talking_stick.connected', function() { $('#nav-roomcontrols').show() })
 $(window).resize(resizeVideos);
 $('#nav-exit').on('click', TalkingStick.disconnect);
 
