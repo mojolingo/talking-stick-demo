@@ -16,7 +16,7 @@
         <% end %>
     </div>
     <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
+      <ul id="nav-roomcontrols" class="nav navbar-nav navbar-right">
         <li id="nav-microphone"><%= link_to '#' do %>
           <i class="fa fa-microphone fa-3x"></i><br>
           <span class="nav-icon-text">mute</span>
@@ -262,7 +262,7 @@ $('#localvideo').on('talking_stick.devices_ready', function() {
 })
 
 $('#partnervideos').on('talking_stick.partner.cleanup', cleanupPartner);
-$('#localvideo').on('talking_stick.connected', function() { $('#nav-microphone, #nav-video, #nav-exit, #nav-settings').show() })
+$('#localvideo').on('talking_stick.connected', function() { $('#nav-roomcontrols').show() })
 $(window).resize(resizeVideos);
 $('#nav-exit').on('click', TalkingStick.disconnect);
 
