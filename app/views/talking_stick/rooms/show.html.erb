@@ -148,8 +148,8 @@ $(document).ready(function() {
     signalingEngine: signalingEngine,
     logLevel: 'trace',
     iceServers: [
-      {url: 'stun:buckhead.alkaloid.net:3478', username: 'admin', credential: 'SomeBigSecaret'},
-      {url: 'turn:buckhead.alkaloid.net:3478', username: 'admin', credential: 'SomeBigSecaret'},
+      createIceServer('stun:buckhead.alkaloid.net:3478', 'admin', 'SomeBigSecaret'),
+      createIceServer('turn:buckhead.alkaloid.net:3478', 'admin', 'SomeBigSecaret'),
     ],
   };
   TalkingStick.init(options);
