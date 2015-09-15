@@ -3,6 +3,8 @@
 The recommended target for development and deployment is Docker. Included in this example application is the appropriate structure to use Docker for a complete development environment. The basic steps to get the app running are:
 
 * Install docker-compose (`brew install docker-compose`)
+* Run `$ boot2docker init`
+* Run `$ boot2docker up`
 * Boot the app and its dependencies (`docker-compose up`)
 * Create the database (`docker-compose run web bundle exec rake db:setup`)
 * Load the app in a browser (`open http://\`boot2docker ip\`:3000`)
