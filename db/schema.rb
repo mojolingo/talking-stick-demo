@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150516221905) do
+ActiveRecord::Schema.define(version: 20150917184049) do
 
   create_table "talking_stick_participants", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150516221905) do
     t.datetime "last_used"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "slug",       limit: 255
   end
 
   create_table "talking_stick_signals", force: :cascade do |t|
