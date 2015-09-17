@@ -4,6 +4,4 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  get 'rooms' => 'talking_stick/rooms#index'
-  
 end
