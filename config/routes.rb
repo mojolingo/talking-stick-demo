@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  mount TalkingStick::Engine => '/talking_stick'
+  mount TalkingStick::Engine => '/'
 
   root 'welcome#index'
 
