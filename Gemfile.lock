@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/mojolingo/talking_stick.git
-  revision: 337398f2a69cef5f9a6819689e45eb5456afca0b
+  revision: 1d8e9a183865b8c212d3f2c70145903b06405ae0
   branch: master
   specs:
     talking_stick (0.0.1)
