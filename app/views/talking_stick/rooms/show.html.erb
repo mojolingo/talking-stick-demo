@@ -43,12 +43,12 @@
   </div>
 </nav>
 
-<div class="container" role="main" id="room" data-room-name="<%= @room.name %>">
+<div class="container" role="main" id="talking-stick-room" data-room-name="<%= @room.name %>">
   <div class="row">
     <div class="col-xs-3 pull-right">
       <div class="row">
         <div class="col-xs-12">
-          <div id="localvideo-container"></div>
+          <div id="talking-stick-localvideo-container"></div>
         </div>
         <div class="col-xs-12 your-name-container">
           <span class="my-name"></span>
@@ -73,14 +73,14 @@
       </div>
     </div>
     <div class="col-xs-9">
-      <div id="partnervideos" class="row">
+      <div id="talking-stick-partnervideos" class="row">
       </div>
     </div>
   </div>
 </div>
 
 <!-- Room Join Modal -->
-<div class="modal fade" role="dialog" id="video-preview">
+<div class="modal fade" role="dialog" id="talking-stick-video-preview">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -88,11 +88,11 @@
         <h3 class="modal-title"><%= t(:joining_room) %> "<%= @room.name %>"</h3>
       </div>
       <div class="modal-body">
-        <video id="localvideo" poster="<%= image_path 'talking_stick/line-spinner.svg' %>" autoplay=true></video>
-        <p id="preview_instructions"><%= t(:video_grant_access) %></p>
+        <video id="talking-stick-localvideo" poster="<%= image_path 'talking_stick/line-spinner.svg' %>" autoplay=true></video>
+        <p id="talking-stick-preview-instructions"><%= t(:video_grant_access) %></p>
       </div>
       <div class="modal-footer">
-        <form id="connect" class="form-inline">
+        <form id="talking-stick-connect" class="form-inline">
           <div class="form-group">
             <input name="name" placeholder="<% t(:your_name) %>" class='form-control'/>
             <input name="join" type="submit" class="btn btn-default btn-primary" value="<%= t(:join) %>" class='form-control' disabled/>
@@ -132,19 +132,19 @@
 $(document).ready(function() {
   // Attempt to keep the modal from scrolling vertically
   // 300px is the approximate height of the modal, minus the video
-  $('#video-preview').find('video').height($(window).height() - 300);
-  $('#video-preview').modal({backdrop: 'static', keyboard: false, show: true});
+  $('#talking-stick-video-preview').find('video').height($(window).height() - 300);
+  $('#talking-stick-video-preview').modal({backdrop: 'static', keyboard: false, show: true});
   var myGuid = TalkingStick.generateGUID();
   // Use the least-common-denominator, Rails API, for WebRTC setup
   var options = {
-    url: '<%= room_path %>',
+    url: '<%= talking_stick.room_path %>',
     myGuid: myGuid,
   };
   var signalingEngine = new TalkingStick.RailsSignaling(options);
 
   var options = {
     guid: myGuid,
-    roomUrl: '<%= room_path %>',
+    roomUrl: '<%= talking_stick.room_path %>',
     signalingEngine: signalingEngine,
     logLevel: 'trace',
     iceServers: [
@@ -154,53 +154,53 @@ $(document).ready(function() {
   };
   TalkingStick.init(options);
 
-  $('#connect').submit(function (event) {
+  $('#talking-stick-connect').submit(function (event) {
     self.startSession();
     event.preventDefault();
   });
 
-  $('#localvideo').on('talking_stick.local_media_setup', function() {
-    $('#preview_instructions').html('<%= t(:video_intro) %>');
-    $('form#connect input[name="join"]').attr('disabled', false);
+  $('#talking-stick-localvideo').on('talking_stick.local_media_setup', function() {
+    $('#talking-stick-preview-instructions').html('<%= t(:video_intro) %>');
+    $('form#talking-stick-connect input[name="join"]').attr('disabled', false);
   });
 });
 
 function startSession() {
-  $('#localvideo').detach().appendTo('#localvideo-container');
-  $('#localvideo').height('auto');
+  $('#talking-stick-localvideo').detach().appendTo('#talking-stick-localvideo-container');
+  $('#talking-stick-localvideo').height('auto');
   // Gotta restart and re-mute the video after moving it
-  $('#localvideo')[0].play();
+  $('#talking-stick-localvideo')[0].play();
   var myName = $('input[name="name"]').val() 
   TalkingStick.connect(myName);
   $('.my-name').html(myName);
-  $('#video-preview').modal('hide');
+  $('#talking-stick-video-preview').modal('hide');
 };
 
 function resizeVideos() {
-  var videoCollection = $('#partnervideos .video');
+  var videoCollection = $('#talking-stick-partnervideos .video');
   var numVideos = videoCollection.length;
 
   var videoCountClass;
-  $('#partnervideos').removeClass('friends-video-row');
+  $('#talking-stick-partnervideos').removeClass('friends-video-row');
   switch(numVideos) {
   case 1:
-    $('#room').attr('class', 'container');
+    $('#talking-stick-room').attr('class', 'container');
     videoCollection.attr('class','video col-xs-12 col-sm-12 col-md-12 col-lg-12 one-friends-video-container');
     break;
   case 2:
-    $('#room').attr('class', 'container-fluid');
-    $('#partnervideos').addClass('friends-video-row');
+    $('#talking-stick-room').attr('class', 'container-fluid');
+    $('#talking-stick-partnervideos').addClass('friends-video-row');
     videoCollection.attr('class','video col-xs-12 col-sm-6 col-md-6 col-lg-6 two-friends-video-container');
     break;
   case 3:
   case 4:
-    $('#room').attr('class', 'container');
+    $('#talking-stick-room').attr('class', 'container');
     videoCollection.attr('class','video col-xs-12 col-sm-6 col-md-6 four-friends-video-container');
     break;
   case 5:
   case 6:
-    $('#room').attr('class', 'container-fluid');
-    $('#partnervideos').addClass('friends-video-row');
+    $('#talking-stick-room').attr('class', 'container-fluid');
+    $('#talking-stick-partnervideos').addClass('friends-video-row');
     videoCollection.attr('class', 'video col-xs-12 col-sm-6 col-md-4 col-lg-4 six-friends-video-container')
     break;
   }
@@ -210,7 +210,7 @@ function cleanupPartner() {
   resizeVideos();
 }
 
-$('#localvideo').on('talking_stick.new_partner', function(ev, partner) {
+$('#talking-stick-localvideo').on('talking_stick.new_partner', function(ev, partner) {
   var container = $(document.createElement('div'));
   container.addClass('video');
   var partner_name = $(document.createElement('p'));
@@ -226,13 +226,13 @@ $('#localvideo').on('talking_stick.new_partner', function(ev, partner) {
     container.remove();
   });
 
-  $('#partnervideos').append(container);
+  $('#talking-stick-partnervideos').append(container);
 });
-$('#partnervideos').on('talking_stick.partner.media', resizeVideos);
-$('#localvideo').on('talking_stick.disconnected', function() {
+$('#talking-stick-partnervideos').on('talking_stick.partner.media', resizeVideos);
+$('#talking-stick-localvideo').on('talking_stick.disconnected', function() {
   document.location = '/';
 });
-$('#localvideo').on('talking_stick.devices_ready', function() {
+$('#talking-stick-localvideo').on('talking_stick.devices_ready', function() {
   var $audioSelect = $('#audioSourceSelector');
   var $videoSelect = $('#videoSourceSelector');
 
@@ -262,8 +262,8 @@ $('#localvideo').on('talking_stick.devices_ready', function() {
   $videoSelect.on('change', applyDeviceSelection);
 })
 
-$('#partnervideos').on('talking_stick.partner.cleanup', cleanupPartner);
-$('#localvideo').on('talking_stick.connected', function() { $('#nav-roomcontrols').show() })
+$('#talking-stick-partnervideos').on('talking_stick.partner.cleanup', cleanupPartner);
+$('#talking-stick-localvideo').on('talking_stick.connected', function() { $('#nav-roomcontrols').show() })
 $(window).resize(resizeVideos);
 $('#nav-exit').on('click', TalkingStick.disconnect);
 
@@ -298,7 +298,7 @@ $('button.close, button.exit').on('click', function() {
 
 $(document).bind('keypress', function(e) {
   if (e.keyCode === 13) {  // keyCode 13 is the return key
-    $('#connect input.btn-primary').trigger('click');
+    $('#talking-stick-connect input.btn-primary').trigger('click');
   }
 });
 
